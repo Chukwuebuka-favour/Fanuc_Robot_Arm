@@ -1,0 +1,123 @@
+<robot name="fanuc">
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <mesh filename="package://fanuc_description/meshes/base_link.stl" scale="1 1 1"/>
+            </geometry>
+            <material name="link1_color">
+                <color rgba="0.3 0.3 0.7 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <link name="link_1">
+        <visual>
+            <geometry>
+                <mesh filename="package://fanuc_description/meshes/link_1.stl" scale="1 1 1"/>
+            </geometry>
+            <material name="base_color">
+                <color rgba="0 0 0.9 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="base_link_to_link_1" type="revolute">
+        <origin xyz="0.0 0.0 0.6" rpy="-1.57 0.0 -0.7"/>
+        <parent link="base_link"/>
+        <child link="link_1"/>
+        <axis xyz="0.0 1 0.0"/>
+        <limit lower="-3.14" upper="3.14" effort="0.0" velocity="0.0"/>
+    </joint>
+
+    <link name="link_2">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0 0.0"/>
+            <geometry>
+                
+                <mesh filename="package://fanuc_description/meshes/link_2.stl"/>
+            </geometry>
+            <material name="link2_color">
+                <color rgba="0.7 0.0 0.4 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="link_1_to_link_2" type="revolute">
+        <origin xyz="0.0 -0.06 0.0" rpy="1.5 0.0 -0.8"/>
+        <parent link="link_1"/>
+        <child link="link_2"/>
+        <axis xyz="0.0 1 0.0"/>
+        <limit lower="-3.14" upper="3.14" effort="0.0" velocity="0.0"/>
+
+    </joint>
+
+     <link name="link_3">
+        <visual>
+            <geometry>
+                
+                <mesh filename="package://fanuc_description/meshes/link_3.stl"/>
+            </geometry>
+            <material name="link3_color">
+                <color rgba="0.2 0.0 0.8 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="link_2_to_link_3" type="fixed">
+        <origin xyz="0.0 0.0 1.1" rpy="3.14 0.0 -1.57"/>
+        <parent link="link_2"/>
+        <child link="link_3"/>
+        
+    </joint>
+
+    <link name="link_4">
+        <visual>
+            <geometry>
+                <mesh filename="package://fanuc_description/meshes/link_4.stl"/>
+            </geometry>
+            <material name="link4_color">
+                <color rgba="0.8 0.0 0.8 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="link_3_to_link_4" type="fixed">
+        <origin xyz="-0.06 -1. 0.0" rpy="0.0 3.14 -1.57"/>
+        <parent link="link_3"/>
+        <child link="link_4"/>
+    </joint>
+
+    <link name="link_5">
+        <visual>
+            <geometry>
+                <mesh filename="package://fanuc_description/meshes/link_5.stl"/>
+            </geometry>
+            <material name="link5_color">
+                <color rgba="0.8 0.8 0.8 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="link_4_to_link_5" type="fixed">
+        <origin xyz="0.12 0.0 0.0" rpy="0.0 0.0 1.57"/>
+        <parent link="link_4"/>
+        <child link="link_5"/>
+    </joint>
+
+    <link name="link_6">
+        <visual>
+            <geometry>
+                <mesh filename="package://fanuc_description/meshes/link_6.stl"/>
+            </geometry>
+            <material name="link6_color">
+                <color rgba="0. 0.8 0.8 1.0"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="link_5_to_link_6" type="fixed">
+        <origin xyz="0.17 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <parent link="link_5"/>
+        <child link="link_6"/>
+    </joint>
+</robot>
